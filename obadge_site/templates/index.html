@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ nom_du_site.nomsite }}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
+    <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
+</head>
+
+<body>
+    {% block body %}
+    {% endblock %}
+    <!--remttre <div class="loader"></div> une fois le site terminer-->
+    <img src="{{url_for('static', filename='logo.jpg')}}" />
+
+</body>
+
+</html>
