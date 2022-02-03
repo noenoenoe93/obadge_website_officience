@@ -22,7 +22,7 @@ class heritage_de_code_accueil(code_accueil):
 
     @app.route("/")
     def heritage():
-        categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "collection_badges": "Badges Collection"}
+        categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"} # appel de ce dictionnaire dans "partie_construction.html"
         return flask.render_template("partie_construction.html", categories = categories)
 
 html_code = heritage_de_code_accueil(heritage_de_code_accueil.heritage, code_accueil.Accueil)

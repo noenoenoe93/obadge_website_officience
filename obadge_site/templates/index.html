@@ -6,13 +6,21 @@
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
     <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
 </head>
+{% block categories %}
 
 <body>
-    {% block content %}
-    {% endblock %}
-    <!--remttre <div class="loader"></div> une fois le site terminer-->
-    <img src="{{url_for('static', filename='logo.jpg')}}" />
+    <!-- remettre <div class="loader"></div> une fois le site terminer -->
+    <nav>
+        <ul>
+            <li>{{ Home }}</li>
+            <li>{{ Officience_groupe }}</li>
+            <li>{{ Collection_badges }}</li>
+            <li>bonjour</li>        
+        </ul>
+    </nav>
+    <!-- <img src="{{url_for('static', filename='logo.jpg')}}" /> -->
 
 </body>
+{% endblock %}
 
 </html>
