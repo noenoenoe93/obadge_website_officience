@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+body {
+  background-color: black;
+}
+
 #load {
     display: none;
  }
