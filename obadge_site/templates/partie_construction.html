@@ -1,13 +1,15 @@
 {{% extends "index.html" %}}
-{% block body %}
+
+{% block content %}
 
 <body>
-    <ul>
-        <li>{{categories_du_site.Accueil}}</li>
-        <li>{{categories_du_site.Officience_User}}</li>
-        <li>{{categories_du_site.listes_badges}}</li>
-    </ul>
+    <nav>
+        <ul>
+            <li>{{categories_du_site.Accueil}}</li>
+            <li>{{categories_du_site.Officience_User}}</li>
+            <li>{{categories_du_site.listes_badges}}</li>
+        </ul>
+    </nav>
 
 </body>
-
 {% endblock %}
