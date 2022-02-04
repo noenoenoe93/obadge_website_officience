@@ -1,18 +1,79 @@
-h1 {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  margin: 200px 0em 0 19em;
+  list-style-type: none;
+}
+
+li a {
+  display: inline-block;
+  color: rgb(226, 216, 216);
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+ h1 {
     text-align: center;
 }
 
 body {
-  background-color: black;
+  background-color: rgb(43, 39, 39);
 }
 
-#load {
-    display: none;
- }
+.logo_Obadge {
+  position: absolute;
+  right: 650px;
+  bottom: 660px;
+  z-index: 0px;
+}
+
+.logo_Fleur {
+  position: absolute;
+  right: 650px;
+  bottom: 660px;
+  z-index: 0px;
+}
+/*
+ul {
+  padding: 0%;
+  margin: 0%;
+  list-style-type: none;
+}
+
+li {
+  margin: 200px 0em 0 19em;
+  float:left;
+  color: whitesmoke;
+  list-style-type: none;
+  background-color: rgb(65, 61, 61);
+  padding: 8px 8px;
+}
+
+li a {
+  display: block;
+  text-decoration: none;
+  padding: 2px 2px;
+}
+
+li a:hover {
+  background-color: #111
+}
 
 .loader {
-    border: 16px solid #ee0000; /* Light grey */
-    border-top: 16px solid #cc00ff; /* Blue */
+    border: 16px solid #ee0000;
+    border-top: 16px solid #cc00ff;
     border-radius: 50% solid #0088FF;
     width: 120px;
     height: 120px;
@@ -25,3 +86,4 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  */

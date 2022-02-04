@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{ nom_du_site.nomsite }}</title>
+    <title>{{ nom_du_site.nomsite}}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
     <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
 </head>
@@ -10,16 +10,19 @@
 
 <body>
     <!-- remettre <div class="loader"></div> une fois le site terminer -->
+    <div class="logo_Obadge">
+        <img src="{{url_for('static', filename='flower-icon.png')}}" />
+    </div>
     <nav>
         <ul>
-            <li>{{ Home }}</li>
-            <li>{{ Officience_groupe }}</li>
-            <li>{{ Collection_badges }}</li>
-            <li>bonjour</li>        
+            <li><a href="/">{{ categories.Home }}</li>
+            <li><a href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</li>
+            <li><a href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</li>
         </ul>
     </nav>
-    <!-- <img src="{{url_for('static', filename='logo.jpg')}}" /> -->
-
+    <div class="logo_Fleur">
+        <img src="{{url_for('static', filename='logo.jpg')}}" />
+    </div>
 </body>
 {% endblock %}
 
