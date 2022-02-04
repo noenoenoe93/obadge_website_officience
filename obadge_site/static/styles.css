@@ -1,15 +1,14 @@
+/* partie menu navigation */
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   overflow: hidden;
   background-color: #333;
 }
-
-li {
+li { 
   float: left;
-  margin: 200px 0em 0 19em;
-  list-style-type: none;
+  margin: 160px 0em 0 20em;
 }
 
 li a {
@@ -24,53 +23,94 @@ li a:hover {
   background-color: #111;
 }
 
- h1 {
-    text-align: center;
-}
-
-body {
-  background-color: rgb(43, 39, 39);
-}
-
-.logo_Obadge {
-  position: absolute;
-  right: 650px;
-  bottom: 660px;
-  z-index: 0px;
-}
-
-.logo_Fleur {
-  position: absolute;
-  right: 650px;
-  bottom: 660px;
-  z-index: 0px;
-}
-/*
-ul {
-  padding: 0%;
-  margin: 0%;
-  list-style-type: none;
-}
-
-li {
-  margin: 200px 0em 0 19em;
-  float:left;
-  color: whitesmoke;
-  list-style-type: none;
-  background-color: rgb(65, 61, 61);
-  padding: 8px 8px;
-}
-
-li a {
-  display: block;
-  text-decoration: none;
-  padding: 2px 2px;
-}
-
 li a:hover {
   background-color: #111
 }
 
+/* partie arrière plan */
+body {
+  background-color: rgb(43, 39, 39);
+}
+
+/* partie logo */
+.logo_obadge {
+  position: absolute;
+  right: 635px;
+  bottom: 660px;
+  z-index: 0px; 
+}
+
+.logo_fleur {
+  position: absolute;
+  right: 650px;
+  bottom: 110px;
+  z-index: 0px;
+}
+
+.shared_value {
+  position: absolute;
+  right: 510px;
+  bottom: 40px;
+  z-index: 0px;
+  width: 10%;
+	height: auto;
+}
+
+.developing {
+  position: absolute;
+  right: 950px;
+  bottom: 40px;
+  z-index: 0px;
+  width: 10%;
+	height: auto;
+}
+
+.open_knowledge {
+  position: absolute;
+  right: 950px;
+  bottom: 300px;
+  z-index: 0px;
+  width: 10%;
+	height: auto;
+}
+
+.positive_global {
+  position: absolute;
+  right: 720px;
+  bottom: -70px;
+  z-index: 0px;
+  width: 10%;
+	height: auto;
+}
+
+.sustainability {
+  position: absolute;
+  right: 510px;
+  bottom: 300px;
+  z-index: 0px;
+  width: 10%;
+	height: auto;
+}
+
+/*partie cercle */
+.cercle { 
+  height: 500px; 
+  width: 500px; 
+  border: 5px solid rgb(96, 219, 80);
+  border-radius: 50%; 
+  position: absolute;
+  right: 550px;
+  bottom: 0px;
+  z-index: 0px;
+  border-style: dashed;
+  animation: spin 40s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
 .loader {
     border: 16px solid #ee0000;
     border-top: 16px solid #cc00ff;
@@ -85,5 +125,4 @@ li a:hover {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
-  */
+  } */

@@ -10,9 +10,18 @@
 
 <body>
     <!-- remettre <div class="loader"></div> une fois le site terminer -->
-    <div class="logo_Obadge">
-        <img src="{{url_for('static', filename='flower-icon.png')}}" />
-    </div>
+
+    <!-- partie logo -->
+    <div class="cercle"></div>
+    <img class="logo_fleur" src="{{url_for('static', filename='flower-icon.png')}}" alt="logo fleur" />
+    <img class="shared_value" src="{{url_for('static', filename='creating-shared-value.png')}}" alt="logo shared value" />
+    <img class="developing" src="{{url_for('static', filename='developing.png')}}" alt="logo developing" />
+    <img class="open_knowledge" src="{{url_for('static', filename='open-knowledge.png')}}" alt="logo open knowledge" />
+    <img class="positive_global" src="{{url_for('static', filename='positive-global.png')}}" alt="logo positive global" />
+    <img class="sustainability" src="{{url_for('static', filename='sustainability.png')}}" alt="logo sustainability" />
+    <img class="logo_obadge" src="{{url_for('static', filename='logo.jpg')}}" alt="logo obadge" />
+    
+    <!-- partie menu navigation -->
     <nav>
         <ul>
             <li><a href="/">{{ categories.Home }}</li>
@@ -20,9 +29,6 @@
             <li><a href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</li>
         </ul>
     </nav>
-    <div class="logo_Fleur">
-        <img src="{{url_for('static', filename='logo.jpg')}}" />
-    </div>
 </body>
 {% endblock %}
 

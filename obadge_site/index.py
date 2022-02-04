@@ -13,6 +13,7 @@ class code_accueil:
     def Accueil():
     # titre du site
         nom_du_site = {"nomsite": "Openbadge"}
+    # categories du site
         categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"}
         return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories)
 
