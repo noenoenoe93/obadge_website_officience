@@ -1,109 +1,113 @@
-/* partie menu navigation */
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li { 
-  float: left;
-  margin: 160px 0em 0 20em;
+/* partie menu navigation */ 
+.menu_horizontal_text {
+list-style-type: none;
+margin: 0;
+padding: 0;
 }
 
-li a {
-  display: inline-block;
-  color: rgb(226, 216, 216);
+nav {
   text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
+  display: block;
+  margin-top: 100px;
 }
 
-li a:hover {
-  background-color: #111;
-}
+.item_du_menu { 
+  display: inline;
+  background-color: wheat;
+  padding: 2em 15em;
+} 
 
-li a:hover {
-  background-color: #111
-}
-
-/* partie arrière plan */
+/* partie arrière plan du site */
 body {
-  background-color: rgb(43, 39, 39);
+  background-color: rgb(117, 109, 109);
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  background-color: #111;
 }
 
 /* partie logo */
 .logo_obadge {
-  position: absolute;
-  right: 635px;
-  bottom: 660px;
-  z-index: 0px; 
+  position: relative;
+  margin-top: -900px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo_fleur {
-  position: absolute;
-  right: 650px;
-  bottom: 110px;
-  z-index: 0px;
+  position: relative;
+  margin-top: -460px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .shared_value {
   position: absolute;
-  right: 510px;
-  bottom: 40px;
+  right: 920px;
+  bottom: 220px;
   z-index: 0px;
-  width: 10%;
+  width: 7%;
 	height: auto;
 }
 
 .developing {
   position: absolute;
-  right: 950px;
-  bottom: 40px;
+  right: 1470px;
+  bottom: 220px;
   z-index: 0px;
-  width: 10%;
+  width: 7%;
 	height: auto;
 }
 
 .open_knowledge {
   position: absolute;
-  right: 950px;
-  bottom: 300px;
+  right: 1430px;
+  bottom: 550px;
   z-index: 0px;
-  width: 10%;
+  width: 7%;
 	height: auto;
 }
 
 .positive_global {
   position: absolute;
-  right: 720px;
-  bottom: -70px;
+  right: 1180px;
+  bottom: 70px;
   z-index: 0px;
-  width: 10%;
+  width: 7%;
 	height: auto;
 }
 
 .sustainability {
   position: absolute;
-  right: 510px;
-  bottom: 300px;
+  right: 950px;
+  bottom: 550px;
   z-index: 0px;
-  width: 10%;
+  width: 7%;
 	height: auto;
 }
 
 /*partie cercle */
 .cercle { 
-  height: 500px; 
-  width: 500px; 
+  height: 600px; 
+  width: 600px; 
   border: 5px solid rgb(96, 219, 80);
   border-radius: 50%; 
-  position: absolute;
   right: 550px;
   bottom: 0px;
   z-index: 0px;
   border-style: dashed;
   animation: spin 40s linear infinite;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 530px;
+
 }
 @keyframes spin {
   0% { transform: rotate(0deg); }

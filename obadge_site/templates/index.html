@@ -20,14 +20,12 @@
     <img class="positive_global" src="{{url_for('static', filename='positive-global.png')}}" alt="logo positive global" />
     <img class="sustainability" src="{{url_for('static', filename='sustainability.png')}}" alt="logo sustainability" />
     <img class="logo_obadge" src="{{url_for('static', filename='logo.jpg')}}" alt="logo obadge" />
-    
+
     <!-- partie menu navigation -->
-    <nav>
-        <ul>
-            <li><a href="/">{{ categories.Home }}</li>
-            <li><a href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</li>
-            <li><a href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</li>
-        </ul>
+    <nav class="menu_horizontale_text">
+        <a class="item_du_menu" href="/">{{ categories.Home }}</a></li>
+        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe}}</a></li>
+        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges}}</a></li>
     </nav>
 </body>
 {% endblock %}

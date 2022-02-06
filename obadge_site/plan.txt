@@ -1,1 +1,2 @@
 refaire le site openbadge avec en plus un choix de classification de badges (aime/aime pas etc like / dislike ...)   
+faire un dégrader de couleur avec css ou mettre une image grise / pointillés / sombre
