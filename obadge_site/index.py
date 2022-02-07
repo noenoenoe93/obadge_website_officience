@@ -1,3 +1,4 @@
+from cmath import log
 import flask
 # importation de deux modules pour la barre de progression
 # import alive_progress 
@@ -15,7 +16,9 @@ class code_accueil:
         nom_du_site = {"nomsite": "Openbadge"}
     # categories du site
         categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"}
-        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories)
+    # login du site
+        login = {"Authentification": "Login"}
+        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories, login = login)
 
 html_code = code_accueil(code_accueil.Accueil)
 print(html_code)

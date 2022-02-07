@@ -1,8 +1,8 @@
 /* partie menu navigation */ 
 .menu_horizontal_text {
-list-style-type: none;
-margin: 0;
-padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
@@ -17,7 +17,26 @@ nav {
   display: inline;
   background-color: wheat;
   padding: 2em 10em;
-} 
+}
+
+/* partie menu login */ /*
+.menu_login_text {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 620px;
+  bottom: 200px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+} */
+/*
+.item_du_menu_login {
+  display: inline;
+  background-color: wheat;
+  padding: 2em 10em;
+} */
 
 /* partie arrière plan du site */
 body {

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{ nom_du_site.nomsite}}</title>
+    <title>{{ nom_du_site.nomsite }}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
     <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,9 +25,14 @@
     <!-- partie menu navigation -->
     <nav class="menu_horizontale_text">
         <a class="item_du_menu" href="/">{{ categories.Home }}</a></li>
-        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe}}</a></li>
-        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges}}</a></li>
+        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</a></li>
+        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</a></li>
     </nav>
+
+    <!-- partie menu login
+    <nav class="menu_login_text">
+        <a class="item_du_menu_login" href="/">{{ login.Authentification }}</a></li>
+    </nav> -->
 </body>
 {% endblock %}
 
