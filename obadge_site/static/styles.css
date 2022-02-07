@@ -9,17 +9,22 @@ nav {
   text-align: center;
   display: block;
   margin-top: 100px;
+  width: 100%;
 }
 
 .item_du_menu { 
   display: inline;
   background-color: wheat;
-  padding: 2em 15em;
+  padding: 2em 10em;
 } 
 
 /* partie arrière plan du site */
 body {
   background-color: rgb(117, 109, 109);
+}
+
+body, html {
+  height: 100%;
 }
 
 nav a {
@@ -30,6 +35,17 @@ nav a:hover {
   background-color: #111;
 }
 
+/* serviras pour taille ecran portable */
+/*
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+} */
+
 /* partie logo */
 .logo_obadge {
   position: relative;
@@ -37,6 +53,10 @@ nav a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  height: auto;
+  max-width: 100%;
+  width: 20%;
+  height: 15%;
 }
 
 .logo_fleur {
@@ -45,54 +65,64 @@ nav a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  height: auto;
+  max-width: 100%;
+  width: 20%;
+  height: 37%;
 }
 
 .shared_value {
   position: absolute;
   right: 920px;
   bottom: 220px;
-  z-index: 0px;
-  width: 7%;
-	height: auto;
+  z-index: 0px; /*
+  width: 8%; */
+	height: 15%;
+  max-width: 100%;
 }
 
 .developing {
   position: absolute;
   right: 1470px;
   bottom: 220px;
-  z-index: 0px;
-  width: 7%;
-	height: auto;
+  z-index: 0px; /*
+  width: 8%; */
+	height: 15%;
+  max-width: 100%;
 }
 
 .open_knowledge {
   position: absolute;
-  right: 1430px;
-  bottom: 550px;
-  z-index: 0px;
-  width: 7%;
-	height: auto;
+  right: 1000px;
+  bottom: 50px;
+  z-index: 0px; /*
+  width: 8%; */
+	height: 15%;
+  max-width: 100%;
+ 
 }
 
 .positive_global {
   position: absolute;
   right: 1180px;
   bottom: 70px;
-  z-index: 0px;
-  width: 7%;
-	height: auto;
+  z-index: 0px; /*
+  width: 8%; */
+	height: 15%;
+  max-width: 100%;
 }
 
 .sustainability {
   position: absolute;
   right: 950px;
   bottom: 550px;
-  z-index: 0px;
-  width: 7%;
-	height: auto;
+  z-index: 0px; /*
+  width: 8%; */
+	height: 15%;
+  max-width: 100%;
 }
 
-/*partie cercle */
+/* partie cercle */
 .cercle { 
   height: 600px; 
   width: 600px; 
@@ -107,14 +137,15 @@ nav a:hover {
   margin-left: auto;
   margin-right: auto;
   margin-top: 530px;
-
+  max-width: 100%;
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/*
+/* serviras pour animation chargement du site
 .loader {
     border: 16px solid #ee0000;
     border-top: 16px solid #cc00ff;
