@@ -15,28 +15,40 @@ nav {
 
 .item_du_menu { 
   display: inline;
-  background-color: wheat;
-  padding: 2em 10em;
+  background-color: wheat; 
+  padding: 2em 7em;
+  text-decoration: none;
 }
 
-/* partie menu login */ /*
-.menu_login_text {
+/* partie video */ /* vérifier le logo obadge qui doit poser problem pour le full screen et aiutres trucs */
+.video {
+  position: relative;
+  min-width: 100%;
+}
+/* partie authentification */
+.item_du_menu_login {
   position: relative;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 620px;
-  bottom: 200px;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-} */
-/*
-.item_du_menu_login {
-  display: inline;
-  background-color: wheat;
-  padding: 2em 10em;
-} */
+  text-align: center;
+  max-width: 100%;
+  margin-left: 947px;
+  margin-top: -250px;
+  font-size: 20px;
+  color: lightblue;
+  text-decoration: none;
+}
+
+.item_du_menu_inscription {
+  position: relative;
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  font-size: 20px;
+  color: lightblue;
+  text-decoration: none;
+  margin-right: 947px;
+  margin-top: -23px;
+}
 
 /* partie arrière plan du site */
 body {

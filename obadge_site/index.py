@@ -16,9 +16,11 @@ class code_accueil:
         nom_du_site = {"nomsite": "Openbadge"}
     # categories du site
         categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"}
-    # login du site
+    # login
         login = {"Authentification": "Login"}
-        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories, login = login)
+    # inscription
+        inscription = {"Authentification": "Sign Up"}
+        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories, login = login, inscription = inscription)
 
 html_code = code_accueil(code_accueil.Accueil)
 print(html_code)
