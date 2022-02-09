@@ -21,10 +21,7 @@ nav {
 }
 
 /* partie video */ /* vérifier le logo obadge qui doit poser problem pour le full screen et aiutres trucs */
-.video {
-  position: relative;
-  min-width: 100%;
-}
+
 /* partie authentification */
 .item_du_menu_login {
   position: relative;
@@ -52,7 +49,12 @@ nav {
 
 /* partie arrière plan du site */
 body {
-  background-color: rgb(117, 109, 109);
+  background: url("image_transparente_feuille.png"),
+  linear-gradient(rgb(134, 248, 134), rgb(236, 232, 232), rgb(206, 203, 203));
+  mix-blend-mode: normal; 
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 nav a {
@@ -83,8 +85,8 @@ nav a:hover {
   bottom: 2100px;
   max-width: 100%;
   width: 300px;
-}
-
+} 
+ 
 .logo_fleur {
   position: relative;
   display: block;

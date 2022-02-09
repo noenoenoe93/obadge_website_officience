@@ -1,4 +1,3 @@
-from cmath import log
 import flask
 # importation de deux modules pour la barre de progression
 # import alive_progress 
