@@ -14,23 +14,20 @@ class code_accueil:
     # titre du site
         nom_du_site = {"nomsite": "Openbadge"}
     # categories du site
-        categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"}
-        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories)
-
-class heritage_de_code_accueil(code_accueil):
-    def __init__(self, code_HTML_principale, code_HTML_herite):
-        code_accueil.__init__(self, code_HTML_principale)
-        self.code_HTML_herite = code_HTML_herite
-
-    @app.route("/static")
-    def login():
         login = {"Authentification": "Login"}
-        return flask.render_template("login.html", login = login)
-
-    @app.route("/static")
-    def Inscription():
         inscription = {"Authentification": "Sign Up"}
-        return flask.render_template("inscription.html", inscription = inscription)
+        categories = {"Home": "Accueil", "Officience_groupe": "Officience Team", "Collection_badges": "Badges Collection"}
+        return flask.render_template("index.html", nom_du_site = nom_du_site, categories = categories, login = login, inscription = inscription)
 
-html_code = code_accueil(heritage_de_code_accueil)
+    @app.route("/login")
+    def Login():
+    # login du site
+        return flask.render_template("login.html")
+
+    @app.route("/inscription")
+    def Inscription():
+    # inscription du site
+        return flask.render_template("inscription.html")
+
+html_code = code_accueil(code_HTML_principal = code_accueil)
 print(html_code)
