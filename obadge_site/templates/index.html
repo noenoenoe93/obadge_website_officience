@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-{% block categories %}
 
 <body>
     <!-- remettre <div class="loader"></div> une fois le site terminer -->
@@ -24,9 +23,9 @@
 
     <!-- partie menu navigation -->
     <nav class="menu_horizontale_text">
-        <a class="item_du_menu" href="/">{{ categories.Home }}</a></li>
-        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</a></li>
-        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</a></li>
+        <a class="item_du_menu" href="/">{{ categories.Home }}</a>
+        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</a>
+        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</a>
     </nav>
 
     <!-- partie authentification -->
@@ -48,6 +47,5 @@ Address: 16A Le Hong Phong (pro-long), Ward 12, District 10, HCMC, Viet Nam | Te
     <footer>
     </footer>
 </body>
-{% endblock %}
 
 </html>
