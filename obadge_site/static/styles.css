@@ -213,6 +213,26 @@ footer {
   font-size: 20px;
 }
 
+.text_4_Facebook {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  bottom: -780px;
+  font-size: 20px;
+  margin-right: 100px;
+}
+
+.text_5_Youtube {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  bottom: -780px;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
 /* serviras pour animation chargement du site
 .loader {
     border: 16px solid #ee0000;
