@@ -14,13 +14,13 @@ class code_accueil:
     def Accueil():
         return flask.render_template("home.html")
 
-    @app.route("/login")
-    def Login():
-        return flask.render_template("login.html")
-
     @app.route("/inscription")
     def Inscription():
         return flask.render_template("inscription.html")
+
+    @app.route("/groupe")
+    def Team():
+        return flask.render_template("groupe.html")
 
 
 html_code = code_accueil(code_HTML_principal=code_accueil)

@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
 }
-
+  
 nav {
   position: relative;
   text-align: center;
@@ -12,23 +12,23 @@ nav {
   margin-top: -2000px;
   max-width: 100%;
 }
-
+  
 .item_du_menu { 
   display: inline;
   background-color: wheat; 
   padding: 2em 7em;
   text-decoration: none;
 }
-
+  
 nav a {
   color: white;
 }
-
+  
 nav a:hover {
   background-color: #111;
 }
 
-/* partie authentification */
+  /* partie authentification */
 .item_du_menu_login {
   position: relative;
   display: block;
@@ -40,7 +40,7 @@ nav a:hover {
   color: rgb(37, 183, 231);
   text-decoration: none;
 }
-
+  
 .item_du_menu_inscription {
   position: relative;
   display: block;
@@ -52,8 +52,8 @@ nav a:hover {
   margin-right: 947px;
   margin-top: -250px;
 }
-
-/* partie arrière plan du site */
+  
+  /* partie arrière plan du site */
 body {
   background: url("image_transparente_feuille.png"),
   linear-gradient(rgb(134, 248, 134), rgb(236, 232, 232), rgb(188, 252, 252));
@@ -63,18 +63,7 @@ body {
   background-position: center;
 }
 
-/* serviras pour taille ecran portable */
-/*
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-} */
-
-/* partie logo */
+ /* partie logo */
 .logo_obadge {
   position: relative;
   display: block;
@@ -84,94 +73,6 @@ body {
   max-width: 100%;
   width: 300px;
 } 
- 
-.logo_fleur {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 450px;
-  max-width: 100%;
-  width: 280px;
-}
-
-.shared_value {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  left: 260px;
-  bottom: 480px;
-  max-width: 100%;
-  width: 150px;
-}
-
-.developing {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  right: 250px;
-  bottom: 630px;
-  max-width: 100%;
-  width: 150px;
-}
-
-.open_knowledge {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 1140px;
-  max-width: 100%;
-  right: 230px;
-  width: 150px;
-}
-
-.positive_global {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 810px;
-  max-width: 100%;
-  width: 150px;
-}
-
-.sustainability {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 1430px;
-  left: 250px;
-  max-width: 100%;
-  width: 150px;
-}
-
-/* partie cercle */
-.cercle { 
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 530px;
-  max-width: 100%;
-  height: 600px; 
-  width: 600px; 
-  border: 5px solid rgb(96, 219, 80);
-  border-radius: 50%; 
-  right: 0px;
-  bottom: 0px;
-  z-index: 0px;
-  border-style: dashed;
-  animation: spin 40s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
 /* partie pied de page */
 footer {
@@ -183,7 +84,7 @@ footer {
   right: 0;
   padding-bottom: 250px;
 }
-
+  
 .text_1 {
   position: absolute;
   left: 0;
@@ -192,7 +93,7 @@ footer {
   bottom: -600px;
   font-size: 20px;
 }
-
+  
 .text_2 {
   position: absolute;
   left: 0;
@@ -201,7 +102,7 @@ footer {
   bottom: -750px;
   font-size: 20px;
 }
-
+  
 .text_3 {
   position: absolute;
   left: 0;
@@ -210,7 +111,7 @@ footer {
   bottom: -680px;
   font-size: 20px;
 }
-
+  
 .text_4_Facebook {
   position: absolute;
   left: 0;
@@ -220,7 +121,7 @@ footer {
   font-size: 20px;
   margin-right: 100px;
 }
-
+  
 .text_5_Youtube {
   position: absolute;
   left: 0;
@@ -230,20 +131,3 @@ footer {
   font-size: 20px;
   margin-left: 100px;
 }
-
-/* serviras pour animation chargement du site
-.loader {
-    border: 16px solid #ee0000;
-    border-top: 16px solid #cc00ff;
-    border-radius: 50% solid #0088FF;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    right: 50%;
-    margin-left: 45em;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */

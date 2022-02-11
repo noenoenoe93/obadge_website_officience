@@ -1,26 +1,4 @@
-/* partie menu navigation */ 
-.menu_horizontal_text {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav {
-    position: relative;
-    text-align: center;
-    display: block;
-    margin-top: -2000px;
-    max-width: 100%;
-  }
-  
-  .item_du_menu { 
-    display: inline;
-    background-color: wheat; 
-    padding: 2em 7em;
-    text-decoration: none;
-  }
-
-  /* partie arrière plan du site */
+/* partie arrière plan du site */
 body {
     background: url("image_transparente_feuille.png"),
     linear-gradient(rgb(134, 248, 134), rgb(236, 232, 232), rgb(188, 252, 252));
@@ -29,16 +7,8 @@ body {
     background-size: cover;
     background-position: center;
   }
-  
-  nav a {
-    color: white;
-  }
-  
-  nav a:hover {
-    background-color: #111;
-  }
 
-/* partie pied de page */
+  /* partie pied de page */
 footer {
     position: absolute;
     bottom: -800px;
