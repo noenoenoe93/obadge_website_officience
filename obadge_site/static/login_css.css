@@ -1,0 +1,97 @@
+/* partie menu navigation */ 
+.menu_horizontal_text {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    position: relative;
+    text-align: center;
+    display: block;
+    margin-top: -2000px;
+    max-width: 100%;
+  }
+  
+  .item_du_menu { 
+    display: inline;
+    background-color: wheat; 
+    padding: 2em 7em;
+    text-decoration: none;
+  }
+
+  /* partie arrière plan du site */
+body {
+    background: url("image_transparente_feuille.png"),
+    linear-gradient(rgb(134, 248, 134), rgb(236, 232, 232), rgb(188, 252, 252));
+    mix-blend-mode: normal; 
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  nav a {
+    color: white;
+  }
+  
+  nav a:hover {
+    background-color: #111;
+  }
+
+/* partie pied de page */
+footer {
+    position: absolute;
+    bottom: -800px;
+    width: 100%;
+    background: linear-gradient(100deg, rgba(120, 252, 120, 0.534), rgba(255, 160, 160, 0.726));
+    left: 0;
+    right: 0;
+    padding-bottom: 250px;
+  }
+  
+  .text_1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -600px;
+    font-size: 20px;
+  }
+  
+  .text_2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -750px;
+    font-size: 20px;
+  }
+  
+  .text_3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -680px;
+    font-size: 20px;
+  }
+  
+  .text_4_Facebook {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -780px;
+    font-size: 20px;
+    margin-right: 100px;
+  }
+  
+  .text_5_Youtube {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -780px;
+    font-size: 20px;
+    margin-left: 100px;
+  }

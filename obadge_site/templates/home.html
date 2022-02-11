@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
+<link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
+{% endblock %}
+
+{% block body %}
+<!-- partie authentification -->
+<a class="item_du_menu_inscription" href="/inscription">Sign Up</a>
+<a class="item_du_menu_login" href="/login">Login</a>
+
+<!-- pied de page -->
+<p class="text_1">
+    OBadge allows you to create badge, award them to people who deserve and receive badge from others.
+</p>
+<p class="text_2">
+    Address: 16A Le Hong Phong (pro-long), Ward 12, District 10, HCMC, Viet Nam | Tel: +84 (28) 38 62 00 55 | Email :
+    contact@officience.com
+</p>
+<p class="text_3">
+    Contact Information :
+</p>
+<a class="text_4_Facebook" href="https://www.facebook.com/Officience">Facebook</a>
+<a class="text_5_Youtube" href="https://www.youtube.com/channel/UCcZRt3al4UQxa4aTdHRReqg">Youtube</a>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

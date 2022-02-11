@@ -2,50 +2,37 @@
 <html>
 
 <head>
-    <title>{{ nom_du_site.nomsite }}</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
-    <link rel="icon" type="image/png" sizes="22x20" href="{{url_for('static', filename='logo_obadge.ico')}}" />
+    <title>Obadge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body>
     <!-- remettre <div class="loader"></div> une fois le site terminer -->
-
-    <!-- partie logo -->
+    <!-- partie menu navigation -->
     <div class="cercle"></div>
     <img class="logo_fleur" src="{{url_for('static', filename='flower-icon.png')}}" alt="logo fleur" />
-    <img class="shared_value" src="{{url_for('static', filename='creating-shared-value.png')}}" alt="logo shared value" />
+    <img class="shared_value" src="{{url_for('static', filename='creating-shared-value.png')}}"
+        alt="logo shared value" />
     <img class="developing" src="{{url_for('static', filename='developing.png')}}" alt="logo developing" />
     <img class="open_knowledge" src="{{url_for('static', filename='open-knowledge.png')}}" alt="logo open knowledge" />
-    <img class="positive_global" src="{{url_for('static', filename='positive-global.png')}}" alt="logo positive global" />
+    <img class="positive_global" src="{{url_for('static', filename='positive-global.png')}}"
+        alt="logo positive global" />
     <img class="sustainability" src="{{url_for('static', filename='sustainability.png')}}" alt="logo sustainability" />
     <img class="logo_obadge" src="{{url_for('static', filename='logo.jpg')}}" alt="logo obadge" />
-
-    <!-- partie menu navigation -->
     <nav class="menu_horizontale_text">
-        <a class="item_du_menu" href="/">{{ categories.Home }}</a>
-        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">{{ categories.Officience_groupe }}</a>
-        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">{{ categories.Collection_badges }}</a>
+        <a class="item_du_menu" href="/">Accueil</a>
+        <a class="item_du_menu" href="{{url_for('static', filename='groupe.html')}}">Officience Team</a>
+        <a class="item_du_menu" href="{{url_for('static', filename='badges.html')}}">Badges Collection</a>
     </nav>
 
-    <!-- partie authentification -->
-        <!-- <a class="item_du_menu_login" href="{{url_for('static', filename='login.html')}}">{{ login.Authentification }}</a> -->
-        <a class="item_du_menu_inscription" href="{{url_for('static', filename='inscription.html')}}">{{ inscription.Authentification }}</a>
-        <a class="item_du_menu_login" href="/login">Login</a>
-    <!-- pied de page -->
-    <p class="text_1" >
-        OBadge allows you to create badge, award them to people who deserve and receive badge from others.
-    </p>
-    <p class="text_2" >
-Address: 16A Le Hong Phong (pro-long), Ward 12, District 10, HCMC, Viet Nam | Tel: +84 (28) 38 62 00 55 | Email : contact@officience.com
-    </p>
-    <p class="text_3" >
-        Contact Information :
-    </p>
-    <a class="text_4_Facebook" href="https://www.facebook.com/Officience">Facebook</a>
-    <a class="text_5_Youtube" href="https://www.youtube.com/channel/UCcZRt3al4UQxa4aTdHRReqg">Youtube</a>
-    <footer>
-    </footer>
+    {% block body %}
+    {% endblock %}
 </body>
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
 
 </html>

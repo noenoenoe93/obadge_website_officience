@@ -29,9 +29,9 @@ nav {
   text-align: center;
   max-width: 100%;
   margin-left: 947px;
-  margin-top: -250px;
+  margin-top: -20px;
   font-size: 20px;
-  color: lightblue;
+  color: rgb(37, 183, 231);
   text-decoration: none;
 }
 
@@ -41,10 +41,10 @@ nav {
   text-align: center;
   max-width: 100%;
   font-size: 20px;
-  color: lightblue;
+  color: rgb(37, 183, 231);
   text-decoration: none;
   margin-right: 947px;
-  margin-top: -23px;
+  margin-top: -250px;
 }
 
 /* partie arrière plan du site */
