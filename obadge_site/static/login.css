@@ -71,7 +71,7 @@ footer {
   form {
     position: relative;
     text-align: center;
-    bottom: -350px;
+    bottom: -220px;
   }
 
   input {
@@ -83,7 +83,38 @@ footer {
     margin-right: 25px;
 }
 
-.submit {
-    width: 700px;
-    height: 300px;
+input[type=submit] {
+    width: 100px;  
+    height: 20px;
+    margin-left: 40px;
 }
+
+/* partie menu navigation */ 
+.menu_horizontal_text {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    position: relative;
+    text-align: center;
+    display: block;
+    margin-top: 150px;
+    max-width: 100%;
+  }
+  
+  .item_du_menu { 
+    display: inline;
+    background-color: wheat; 
+    padding: 2em 7em;
+    text-decoration: none;
+  }
+  
+  nav a {
+    color: white;
+  }
+  
+  nav a:hover {
+    background-color: #111;
+  }

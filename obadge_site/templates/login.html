@@ -5,10 +5,17 @@
 {% endblock %}
 
 {% block body %}
+<!-- partie menu -->
+<nav class="menu_horizontale_text">
+    <a class="item_du_menu" href="/">Accueil</a>
+    <a class="item_du_menu" href="/groupe">Officience Team</a>
+    <a class="item_du_menu" href="/badges">Badges Collection</a>
+</nav>
+<!-- partie login -->
 <form action="/login" method="POST">
     <p class="name">name : <input type="text" name="name" /></p>
     <p class="password">password : <input type="password" name="password" /></p>
-    <p class="submit"><input type="submit" value="Submit" /></p>
+    <p><input type="submit" value="Login" /></p>
 </form>
 {% endblock %}
 
