@@ -1,0 +1,89 @@
+/* partie arrière plan du site */
+body {
+    background: url("image_transparente_feuille.png"),
+    linear-gradient(rgb(134, 248, 134), rgb(236, 232, 232), rgb(188, 252, 252));
+    mix-blend-mode: normal; 
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+/* partie pied de page */
+footer {
+    position: absolute;
+    bottom: -800px;
+    width: 100%;
+    background: linear-gradient(100deg, rgba(120, 252, 120, 0.534), rgba(255, 160, 160, 0.726));
+    left: 0;
+    right: 0;
+    padding-bottom: 250px;
+  }
+  
+  .text_1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -600px;
+    font-size: 20px;
+  }
+  
+  .text_2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -750px;
+    font-size: 20px;
+  }
+  
+  .text_3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -680px;
+    font-size: 20px;
+  }
+  
+  .text_4_Facebook {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -780px;
+    font-size: 20px;
+    margin-right: 100px;
+  }
+  
+  .text_5_Youtube {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -780px;
+    font-size: 20px;
+    margin-left: 100px;
+  }
+
+  /* partie login */
+
+  form {
+    position: relative;
+    text-align: center;
+    bottom: -350px;
+  }
+
+  input {
+    width: 300px;
+    height: 30px;
+  }
+
+.password {
+    margin-right: 25px;
+}
+
+.submit {
+    width: 700px;
+    height: 300px;
+}

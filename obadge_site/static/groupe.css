@@ -9,7 +9,7 @@ nav {
   position: relative;
   text-align: center;
   display: block;
-  margin-top: -2000px;
+  margin-top: 150px;
   max-width: 100%;
 }
   
@@ -69,7 +69,7 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  bottom: 2100px;
+  bottom: -50px;
   max-width: 100%;
   width: 300px;
 } 
@@ -130,4 +130,16 @@ footer {
   bottom: -780px;
   font-size: 20px;
   margin-left: 100px;
+}
+
+/* partie barre de recherche */
+form {
+  position: relative;
+  text-align: center;
+  bottom: -350px;
+}
+
+input {
+  width: 300px;
+  height: 30px;
 }

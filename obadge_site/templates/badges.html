@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block head %}
-<link rel="stylesheet" href="{{url_for('static', filename='groupe.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='badges.css')}}" />
 {% endblock %}
 
 {% block body %}
@@ -19,12 +19,6 @@
 <!-- partie authentification -->
 <a class="item_du_menu_inscription" href="/inscription">Sign Up</a>
 <a class="item_du_menu_login" href="/inscription">Login</a>
-
-<!-- barre de recherche -->
-<form>
-    <input type="text" name="text" class="search" placeholder="find officience users">
-    <input type="submit" name="submit" class="submit" value="Search">
-</form>
 {% endblock %}
 
 {% block footer %}
