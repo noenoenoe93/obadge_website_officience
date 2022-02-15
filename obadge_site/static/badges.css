@@ -1,3 +1,13 @@
+/* partie text obadge */
+strong {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 60px;
+  bottom: -50px;
+  color: #111;
+}
+
 /* partie menu navigation */ 
 .menu_horizontal_text {
     list-style-type: none;
@@ -15,17 +25,18 @@
     
   .item_du_menu { 
     display: inline;
-    background-color: wheat; 
+    background-color: rgba(38, 148, 34, 0.308); 
     padding: 2em 7em;
     text-decoration: none;
   }
-    
+  
   nav a {
-    color: white;
+    color: rgb(248, 248, 248);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
   }
-    
+  
   nav a:hover {
-    background-color: #111;
+    background-color: rgba(72, 255, 0, 0.267);
   }
   
     /* partie authentification */
@@ -50,7 +61,7 @@
     color: rgb(37, 183, 231);
     text-decoration: none;
     margin-right: 947px;
-    margin-top: -250px;
+    margin-top: -220px;
   }
     
     /* partie arrière plan du site */
@@ -62,17 +73,6 @@
     background-size: cover;
     background-position: center;
   }
-  
-   /* partie logo */
-  .logo_obadge {
-    position: relative;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: -50px;
-    max-width: 100%;
-    width: 300px;
-  } 
   
   /* partie pied de page */
   footer {
@@ -139,24 +139,11 @@
     bottom: -300px;
   }
 
-  label {
-    position: absolute;
-    display: inline-block;
-    bottom: 200px;
-    background-color: rgba(214, 130, 130, 0.541);
-    padding: 10px 20px;
-    text-decoration: none;
-  }
-/*
-  label input:hover {
-    background-color: rgba(243, 125, 125, 0.897);
-  } */
-
   /* partie barre de recherche */
   form {
    position: relative;
    text-align: center;
-   bottom: -320px;              /* ajouter CSS dans HTML */
+   bottom: -330px;         
  }
 
   input {

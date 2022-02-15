@@ -1,3 +1,20 @@
+/* partie text */
+h1 {
+  position: relative;
+  text-align: center;
+  bottom: -330px;
+}
+
+/* partie text titre obadge */
+strong {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 60px;
+  bottom: -50px;
+  color: #111;
+}
+
 /* partie menu navigation */ 
 .menu_horizontal_text {
   list-style-type: none;
@@ -15,17 +32,18 @@ nav {
   
 .item_du_menu { 
   display: inline;
-  background-color: wheat; 
+  background-color: rgba(38, 148, 34, 0.308); 
   padding: 2em 7em;
   text-decoration: none;
 }
-  
+
 nav a {
-  color: white;
+  color: rgb(248, 248, 248);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
-  
+
 nav a:hover {
-  background-color: #111;
+  background-color: rgba(72, 255, 0, 0.267);
 }
 
   /* partie authentification */
@@ -50,7 +68,7 @@ nav a:hover {
   color: rgb(37, 183, 231);
   text-decoration: none;
   margin-right: 947px;
-  margin-top: -250px;
+  margin-top: -280px;
 }
   
   /* partie arrière plan du site */
@@ -62,17 +80,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
- /* partie logo */
-.logo_obadge {
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: -50px;
-  max-width: 100%;
-  width: 300px;
-} 
 
 /* partie pied de page */
 footer {
@@ -136,7 +143,7 @@ footer {
 form {
   position: relative;
   text-align: center;
-  bottom: -350px;
+  bottom: -450px;
 }
 
 input {
