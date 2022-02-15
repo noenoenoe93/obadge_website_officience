@@ -2,12 +2,12 @@
 strong {
   position: relative;
   display: block;
-  text-align: center;
-  width: 250px;
-  font-size: 60px;
+  text-align: center; /*
+  width: 250px; */
+  font-size: 60px; 
   bottom: -50px;
-  color: #111;
-  background-color: teal;
+  color: #111; /*
+  background-color: teal; */
 }
 
 /* partie menu navigation */ 
