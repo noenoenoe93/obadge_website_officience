@@ -1,13 +1,13 @@
 /* partie text obadge */
-strong {
+.titre_du_site { 
   position: relative;
-  display: block;
-  text-align: center; /*
-  width: 250px; */
-  font-size: 60px; 
   bottom: -50px;
-  color: #111; /*
-  background-color: teal; */
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+  font-size: 60px;
+  color: #111;
+  background-color: teal;
 }
 
 /* partie arrière plan du site */

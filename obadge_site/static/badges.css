@@ -1,12 +1,23 @@
-/* partie text obadge */
-strong {
-  position: relative;
-  display: block;
-  text-align: center;
-  font-size: 60px;
-  bottom: -50px;
-  color: #111;
+/* partie checkbox */
+.checkbox {
+  display: flex;
+  background: linear-gradient(100deg, rgba(184, 174, 174, 0.473), rgba(0, 255, 64, 0.534), rgba(255, 135, 135, 0.507));
+  background-attachment: fixed;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 64%;
+  padding-top: 40px;
+  border: 2px solid;
 }
+
+.container {
+  position: relative;
+  margin-top: -35px;
+  left: 80px;
+}
+
+/* partie text obadge */
 
 /* partie menu navigation */ 
 .menu_horizontal_text {
@@ -139,7 +150,8 @@ strong {
     bottom: -300px;
   }
 
-  /* partie barre de recherche */
+
+  /* partie barre de recherche */ /*
   form {
    position: relative;
    text-align: center;
@@ -149,4 +161,4 @@ strong {
   input {
    width: 300px;
    height: 30px;
- }
+ } */
