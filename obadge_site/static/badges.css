@@ -1,5 +1,6 @@
 /* partie checkbox */
 .checkbox {
+  position: relative;
   display: flex;
   background: linear-gradient(100deg, rgba(184, 174, 174, 0.473), rgba(0, 255, 64, 0.534), rgba(255, 135, 135, 0.507));
   background-attachment: fixed;
@@ -7,17 +8,25 @@
   align-items: center;
   margin: 0 auto;
   width: 64%;
-  padding-top: 40px;
   border: 2px solid;
+  bottom: -360px;
 }
 
 .container {
-  position: relative;
-  margin-top: -35px;
-  left: 80px;
-}
+  margin-left: 30px;
+} 
 
-/* partie text obadge */
+/* partie titre obadge */
+.titre_du_site { 
+  position: relative;
+  bottom: -50px;
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+  font-size: 60px;
+  color: #111;
+  background-color: teal;
+}
 
 /* partie menu navigation */ 
 .menu_horizontal_text {
@@ -93,6 +102,7 @@
     background: linear-gradient(100deg, rgba(120, 252, 120, 0.534), rgba(255, 160, 160, 0.726));
     left: 0;
     right: 0;
+    border: 1px solid;
     padding-bottom: 250px;
   }
     
@@ -151,14 +161,19 @@
   }
 
 
-  /* partie barre de recherche */ /*
-  form {
+  /* partie barre de recherche */
+  .barre_de_recherche {  
    position: relative;
    text-align: center;
-   bottom: -330px;         
+   bottom: -340px; 
+ } 
+
+ .barre_de_recherche input[type="text"] {
+   width: 250px;
+   height: 30px;
  }
 
-  input {
-   width: 300px;
-   height: 30px;
- } */
+ .barre_de_recherche input[type="submit"] {
+  width: 250px;
+  height: 36px;
+}
