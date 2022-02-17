@@ -1,7 +1,7 @@
 /* partie checkbox */
 .checkbox {
   position: relative;
-  display: flex;
+  display: block;
   background: linear-gradient(100deg, rgba(184, 174, 174, 0.473), rgba(0, 255, 64, 0.534), rgba(255, 135, 135, 0.507));
   background-attachment: fixed;
   justify-content: center;
@@ -13,10 +13,10 @@
 }
 
 .container {
-  margin-left: 30px;
+  margin-left: 10px;
 } 
 
-/* partie titre obadge */
+/* partie titre du site */
 .titre_du_site { 
   position: relative;
   bottom: -50px;
@@ -24,8 +24,8 @@
   margin: 0 auto;
   width: 250px;
   font-size: 60px;
-  color: #111;
-  background-color: teal;
+  color: rgba(255, 123, 0, 0.534);
+  background: linear-gradient(90deg, rgba(0, 255, 55, 0.658), rgba(255, 187, 0, 0.26), rgba(0, 255, 55, 0.658))
 }
 
 /* partie menu navigation */ 

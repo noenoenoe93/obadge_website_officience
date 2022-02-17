@@ -1,4 +1,4 @@
-/* partie titre obadge */
+/* partie titre du site */
 .titre_du_site { 
   position: relative;
   bottom: -50px;
@@ -6,10 +6,9 @@
   margin: 0 auto;
   width: 250px;
   font-size: 60px;
-  color: #111;
-  background-color: teal;
+  color: rgba(255, 123, 0, 0.534);
+  background: linear-gradient(90deg, rgba(0, 255, 55, 0.658), rgba(255, 187, 0, 0.26), rgba(0, 255, 55, 0.658))
 }
-
 /* partie arrière plan du site */
 body {
     background: url("image_transparente_feuille.png"),

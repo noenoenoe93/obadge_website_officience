@@ -5,14 +5,16 @@ h1 {
   bottom: -330px;
 }
 
-/* partie text titre obadge */
-strong {
+/* partie titre du site */
+.titre_du_site { 
   position: relative;
-  display: block;
-  text-align: center;
-  font-size: 60px;
   bottom: -50px;
-  color: #111;
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+  font-size: 60px;
+  color: rgba(255, 123, 0, 0.534);
+  background: linear-gradient(90deg, rgba(0, 255, 55, 0.658), rgba(255, 187, 0, 0.26), rgba(0, 255, 55, 0.658))
 }
 
 /* partie menu navigation */ 
