@@ -1,16 +1,19 @@
 from flask import render_template as tmp
 from flask import request as rq
-from flask import Flask
-from flask_mysqldb import MySQL
+from flask import Flask as flk
+from flask import flash as fls
+from flask import redirect as rdir
+from flask import url_for as rlf
+from flask_mysqldb import MySQL as msl
 # import flaskext.mysql
 # importation de deux modules pour la barre de progression
 # import alive_progress
 # import time
 
-app = Flask(__name__)
+app = flk(__name__)
 
 # mysql configuration
-mysql = MySQL()
+mysql = msl()
 app.config['MYSQL_HOST'] = 'remotemysql.com'
 app.config['MYSQL_USER'] = '9chqeV2qiY'
 app.config['MYSQL_PASSWORD'] = 'KijTw9vZN4'
@@ -26,16 +29,16 @@ def Accueil():
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
-    if rq.method == "GET":
-        return tmp("inscription.html")
-    if rq.method == "POST":
+    if rq.method == 'POST':
         name = rq.form.get("name")
         password = rq.form.get("password")
         email = rq.form.get("email")
         cur = mysql.connection.cursor()  # connexion à la base de données
-        cur.execute("INSERT INTO inscription VALUES (%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
+        cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
         cur.close()
-        return tmp("inscription.html", name=name, password=password, email=email)
+        return tmp("inscription.html")
+    else:
+        return tmp("error.html")
 
 @app.route("/groupe")
 def Team():
