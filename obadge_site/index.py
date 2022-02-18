@@ -1,10 +1,16 @@
-from flask import render_template as tmp
+from flask import flash, render_template as tmp
 from flask import request as rq
 from flask import Flask as flk
 from flask import flash as fls
 from flask import redirect as rdir
 from flask import url_for as rlf
 from flask_mysqldb import MySQL as msl
+from wtforms import Form as fm
+from wtforms import StringField as stf
+from wtforms import PasswordField as psf
+from wtforms import validators as vld
+from wtforms import EmailField as emf
+# from validators import validation, RegistrationForm
 # import flaskext.mysql
 # importation de deux modules pour la barre de progression
 # import alive_progress
@@ -29,14 +35,16 @@ def Accueil():
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
-    if rq.method == 'POST':
-        name = rq.form.get("name")
-        password = rq.form.get("password")
-        email = rq.form.get("email")
+    form = RegistrationForm(rq.form)
+    if rq.method == 'POST' and form.validate():
+        name = form.name.data
+        password = form.password.data
+        email = form.email.data
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
+        mysql.connection.commit()
         cur.close()
-        return tmp("inscription.html")
+        return tmp("inscription.html", form=form)
     else:
         return tmp("error.html")
 
@@ -53,3 +61,9 @@ def Badges():
 @app.route("/login")
 def Login():
     return tmp("login.html")
+
+# partie vérification
+class RegistrationForm(fm):
+    name = stf('name', [vld.Length(min=4, max=25)])
+    password = psf('password', [vld.Length(min=6, max=100)])
+    email = emf('email', [vld.Length(min=6, max=50)])
