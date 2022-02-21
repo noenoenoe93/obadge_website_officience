@@ -12,10 +12,11 @@
     <a class="item_du_menu" href="/badges">Badges Collection</a>
 </nav>
 <!-- partie inscription-->
+{% from "includes/_formhelpers.html" import render_field %}
 <form action="/inscription" method="POST">
-    <p class="name">name : <input type="text" name="name" /></p>
-    <p class="password">password : <input type="password" name="password" /></p>
-    <p class="email">email : <input type="text" name="email" /></p>
+    <p class="name">{{render_field(form.name)}}<input type="text" /></p>
+    <p class="password">{{render_field(form.password)}}<input type="password" /></p>
+    <p class="email">{{render_field(form.email)}}<input type="text" /></p>
     <p><input type="submit" value="Sign Up" /></p>
 </form>
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import flash, render_template as tmp
+from flask import render_template as tmp
 from flask import request as rq
 from flask import Flask as flk
 from flask import flash as fls
@@ -10,6 +10,11 @@ from wtforms import StringField as stf
 from wtforms import PasswordField as psf
 from wtforms import validators as vld
 from wtforms import EmailField as emf
+from wtforms import SubmitField as sbm
+from wtforms.validators import DataRequired as dt
+from wtforms.validators import Length as lg
+from wtforms.validators import Email as em
+from wtforms.validators import EqualTo as eq
 # from validators import validation, RegistrationForm
 # import flaskext.mysql
 # importation de deux modules pour la barre de progression
@@ -37,16 +42,16 @@ def Accueil():
 def Inscription():
     form = RegistrationForm(rq.form)
     if rq.method == 'POST' and form.validate():
-        name = form.name.data
+        name = form.name.data 
         password = form.password.data
         email = form.email.data
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
         mysql.connection.commit()
         cur.close()
-        return tmp("inscription.html", form=form)
-    else:
-        return tmp("error.html")
+        fls("You are now registered and may log in.", 'success')
+        return rdir(rlf('login'))
+    return tmp("inscription.html", form=form)
 
 @app.route("/groupe")
 def Team():
@@ -62,8 +67,43 @@ def Badges():
 def Login():
     return tmp("login.html")
 
-# partie vérification
+# partie vérification signup
 class RegistrationForm(fm):
-    name = stf('name', [vld.Length(min=4, max=25)])
-    password = psf('password', [vld.Length(min=6, max=100)])
-    email = emf('email', [vld.Length(min=6, max=50)])
+    name = stf(
+        "Name : ",
+        [
+            dt(message="Please enter a name"),
+            lg(min=4, message="Name is too short, please try again."),
+            lg(max=40, message="Name is too long, please try again"),
+        ]
+    )
+
+    email = emf(
+        "Email : ",
+        [
+            em(message="Please enter a email"),
+            lg(min=4, message="Mail is too short, please try gain"),
+            lg(max=40, message="Mail is too long, please try again"),
+            dt()
+        ]
+    )
+
+    password = psf(
+        "Password : ",
+        [
+            dt(message="Please enter a password"),
+            lg(min=4, message="Password is too short, please try again"),
+            lg(max=100, message="Password is too long, please try again")
+        ]
+    )
+
+    confirm_password = psf(
+        "Repeat Password : ",
+        [
+            dt(),
+            eq(password, message="Error password is different"),
+            lg(min=4),
+            lg(max=100)
+        ]
+    )
+    submit = sbm("Submit")
