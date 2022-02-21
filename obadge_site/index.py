@@ -54,7 +54,7 @@ def Team():
 
 @app.route("/success_register")
 def Success():
-    return tmp("success_register.html")
+    return tmp("success_register.html") # page de redirection signup
 
 @app.route("/badges")
 def Badges():
