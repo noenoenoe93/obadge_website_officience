@@ -79,6 +79,7 @@ body {
   }
 
    /* partie login */
+   /*
    form {
     position: relative;
     text-align: center;
@@ -99,7 +100,7 @@ input[type=submit] {
     height: 20px;
     margin-left: 40px;
 }
-
+*/
 /* partie menu navigation */ 
 .menu_horizontal_text {
   list-style-type: none;

@@ -15,11 +15,6 @@ from wtforms.validators import DataRequired as dt
 from wtforms.validators import Length as lg
 from wtforms.validators import Email as em
 from wtforms.validators import EqualTo as eq
-# from validators import validation, RegistrationForm
-# import flaskext.mysql
-# importation de deux modules pour la barre de progression
-# import alive_progress
-# import time
 
 app = flk(__name__)
 
@@ -29,6 +24,7 @@ app.config['MYSQL_HOST'] = 'remotemysql.com'
 app.config['MYSQL_USER'] = '9chqeV2qiY'
 app.config['MYSQL_PASSWORD'] = 'KijTw9vZN4'
 app.config['MYSQL_DB'] = '9chqeV2qiY'
+app.config['SECRET_KEY'] = 'abcdefghijklmnop'
 
 # initialisation mysql
 mysql.init_app(app)
@@ -36,7 +32,6 @@ mysql.init_app(app)
 @app.route("/")  # répertoire du site
 def Accueil():
     return tmp("home.html")
-
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
@@ -49,19 +44,21 @@ def Inscription():
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
         mysql.connection.commit()
         cur.close()
-        fls("You are now registered and may log in.", 'success')
-        return rdir(rlf('login'))
+        fls("Congrats you are now registered and may log in.")
+        return rdir(rlf('Success')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
 
 @app.route("/groupe")
 def Team():
     return tmp("groupe.html")
 
+@app.route("/success_register")
+def Success():
+    return tmp("success_register.html")
 
 @app.route("/badges")
 def Badges():
     return tmp("badges.html")
-
 
 @app.route("/login")
 def Login():
@@ -101,9 +98,9 @@ class RegistrationForm(fm):
         "Repeat Password : ",
         [
             dt(),
-            eq(password, message="Error password is different"),
+            eq("password", message="Error password is different"),
             lg(min=4),
             lg(max=100)
         ]
     )
-    submit = sbm("Submit")
+    submit = sbm("Sign Up")
