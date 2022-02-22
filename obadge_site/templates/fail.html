@@ -1,0 +1,11 @@
+<head>
+    <meta http-equiv="refresh" content="3; url=http://127.0.0.1:5000/inscription.html">
+</head>
+
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+
+<body>
+    <h1>Error username is already taken, you will be redirected in 3 seconds ...</h1>
+</body>

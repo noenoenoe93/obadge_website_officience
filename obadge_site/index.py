@@ -42,19 +42,38 @@ def Inscription():
         email = form.email.data
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
-        mysql.connection.commit()
-        cur.close()
-        fls("Congrats you are now registered and may log in.")
+        cur.execute("SELECT user_name, COUNT(user_name), password_user, COUNT(password_user), email_user, COUNT(email_user) FROM inscription GROUP BY user_name, password_user, email_user HAVING COUNT(user_name)>1 AND COUNT(password_user)>1 AND COUNT(email_user)>1;")
+        # partie vérifification des doublons dans la db
+        for duplicate in cur.fetchall():
+                doublons = print(duplicate)
+                fls("Sorry, username is already taken")
+                return rdir(rlf('Fail'))
+        else:
+                mysql.connection.commit()
+                cur.close()
+                fls("Congrats you are now registered and may log in.")
+                return rdir(rlf('Success')) # redirection avec message si infos valide
+        return tmp("inscription.html", form=form)
+    '''
+        if check_duplicate is not None:
+            fls("Sorry, username is already taken")
+            return rdir(rlf('Fail')) # redirection avec message si infos non valide
+        else:
+            fls("Congrats you are now registered and may log in.")
         return rdir(rlf('Success')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
-
+    '''
 @app.route("/groupe")
 def Team():
     return tmp("groupe.html")
 
-@app.route("/success_register")
+@app.route("/fail") # page de redirection signup
+def Fail():
+    return tmp("fail.html")
+
+@app.route("/success_register") # page de redirection signup
 def Success():
-    return tmp("success_register.html") # page de redirection signup
+    return tmp("success_register.html") 
 
 @app.route("/badges")
 def Badges():
