@@ -42,25 +42,29 @@ def Inscription():
         email = form.email.data
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
-        cur.execute("SELECT user_name, COUNT(user_name), password_user, COUNT(password_user), email_user, COUNT(email_user) FROM inscription GROUP BY user_name, password_user, email_user HAVING COUNT(user_name)>1 AND COUNT(password_user)>1 AND COUNT(email_user)>1;")
+        dup = cur.execute("SELECT user_name, COUNT(user_name) FROM inscription GROUP BY user_name HAVING COUNT(user_name)>1;")
+        dup2 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>1;")
         # partie vérifification des doublons dans la db
-        for duplicate in cur.fetchall():
-                doublons = print(duplicate)
-                fls("Sorry, username is already taken")
+        print(dup, dup2)
+        # for duplicate in cur.fetchall():
+               # print(duplicate)
+        if dup >= 1 or dup2 >= 1:
+                cur.close()
+                fls("Sorry, username or email is already taken") # redirection avec message si infos non valide
                 return rdir(rlf('Fail'))
         else:
                 mysql.connection.commit()
                 cur.close()
                 fls("Congrats you are now registered and may log in.")
                 return rdir(rlf('Success')) # redirection avec message si infos valide
-        return tmp("inscription.html", form=form)
+    return tmp("inscription.html", form=form)
     '''
         if check_duplicate is not None:
             fls("Sorry, username is already taken")
-            return rdir(rlf('Fail')) # redirection avec message si infos non valide
+            return rdir(rlf('Fail')) 
         else:
             fls("Congrats you are now registered and may log in.")
-        return rdir(rlf('Success')) # redirection avec message si infos valide
+        return rdir(rlf('Success'))
     return tmp("inscription.html", form=form)
     '''
 @app.route("/groupe")
