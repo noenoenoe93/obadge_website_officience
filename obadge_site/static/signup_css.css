@@ -79,11 +79,10 @@ body {
   }
 
    /* partie login */
-   /*
    form {
     position: relative;
     text-align: center;
-    bottom: -180px;
+    bottom: -220px;
   }
 
   input {
@@ -91,16 +90,11 @@ body {
     height: 30px;
   }
 
-.password {
-    margin-right: 25px;
-}
-
 input[type=submit] {
     width: 100px;  
     height: 20px;
     margin-left: 40px;
 }
-*/
 /* partie menu navigation */ 
 .menu_horizontal_text {
   list-style-type: none;

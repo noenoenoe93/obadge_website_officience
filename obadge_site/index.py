@@ -8,7 +8,7 @@ from flask_mysqldb import MySQL as msl
 from wtforms import Form as fm
 from wtforms import StringField as stf
 from wtforms import PasswordField as psf
-from wtforms import validators as vld
+# from wtforms import validators as vld
 from wtforms import EmailField as emf
 from wtforms import SubmitField as sbm
 from wtforms.validators import DataRequired as dt
