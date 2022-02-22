@@ -44,10 +44,8 @@ def Inscription():
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
         dup = cur.execute("SELECT user_name, COUNT(user_name) FROM inscription GROUP BY user_name HAVING COUNT(user_name)>1;")
         dup2 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>1;")
+
         # partie vérifification des doublons dans la db
-        print(dup, dup2)
-        # for duplicate in cur.fetchall():
-               # print(duplicate)
         if dup >= 1 or dup2 >= 1:
                 cur.close()
                 fls("Sorry, username or email is already taken") # redirection avec message si infos non valide
@@ -58,15 +56,7 @@ def Inscription():
                 fls("Congrats you are now registered and may log in.")
                 return rdir(rlf('Success')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
-    '''
-        if check_duplicate is not None:
-            fls("Sorry, username is already taken")
-            return rdir(rlf('Fail')) 
-        else:
-            fls("Congrats you are now registered and may log in.")
-        return rdir(rlf('Success'))
-    return tmp("inscription.html", form=form)
-    '''
+
 @app.route("/groupe")
 def Team():
     return tmp("groupe.html")
