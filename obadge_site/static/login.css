@@ -87,20 +87,15 @@ footer {
     bottom: -220px;
   }
 
-  input {
-    width: 300px;
-    height: 30px;
+  .password {
+    margin-left: -70px;
+    margin-top: 10px;
   }
 
-.password {
-    margin-right: 25px;
-}
-
-input[type=submit] {
-    width: 100px;  
-    height: 20px;
-    margin-left: 40px;
-}
+  .email {
+    margin-left: -47px;
+    margin-top: 10px;
+  }
 
 /* partie menu navigation */ 
 .menu_horizontal_text {

@@ -42,40 +42,66 @@ def Inscription():
         email = form.email.data
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO inscription(user_name, password_user, email_user) VALUES(%s, %s, %s)", (name, password, email))  # exécution de la requête mysql
-        dup = cur.execute("SELECT user_name, COUNT(user_name) FROM inscription GROUP BY user_name HAVING COUNT(user_name)>1;")
+        dup1 = cur.execute("SELECT user_name, COUNT(user_name) FROM inscription GROUP BY user_name HAVING COUNT(user_name)>1;")
         dup2 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>1;")
 
         # partie vérifification des doublons dans la db
-        if dup >= 1 or dup2 >= 1:
+        if dup1 >= 1 or dup2 >= 1:
                 cur.close()
                 fls("Sorry, username or email is already taken") # redirection avec message si infos non valide
-                return rdir(rlf('Fail'))
+                return rdir(rlf('Fail_signup'))
         else:
                 mysql.connection.commit()
                 cur.close()
                 fls("Congrats you are now registered and may log in.")
-                return rdir(rlf('Success')) # redirection avec message si infos valide
+                return rdir(rlf('Success_signup')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
 
 @app.route("/groupe")
 def Team():
     return tmp("groupe.html")
 
-@app.route("/fail") # page de redirection signup
-def Fail():
-    return tmp("fail.html")
+@app.route("/fail_signup") # page de redirection signup
+def Fail_signup():
+    return tmp("fail_register.html")
 
 @app.route("/success_register") # page de redirection signup
-def Success():
+def Success_signup():
     return tmp("success_register.html") 
 
 @app.route("/badges")
 def Badges():
     return tmp("badges.html")
 
-@app.route("/login")
+@app.route("/login", methods=['POST', 'GET'])
 def Login():
-    return tmp("login.html")
+    form = LoginForm(rq.form)
+    if rq.method == 'POST' and form.validate(): 
+        email = form.email.data
+        password = form.password.data
+        cur = mysql.connection.cursor()  # connexion à la base de données
+        cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (email, password))  # exécution de la requête mysql
+        dup1 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>0;")
+
+        # partie vérifification des doublons dans la db
+        if dup1 >= 1:
+                cur.close()
+                fls("Sorry, email is already taken") # redirection avec message si infos non valide
+                return rdir(rlf('Fail_login'))
+        else:
+                mysql.connection.commit()
+                cur.close()
+                fls("Login successful")
+                return rdir(rlf('Success_login')) # redirection avec message si infos valide
+    return tmp("login.html", form=form)
+
+@app.route("/fail_login") # page de redirection login
+def Fail_login():
+    return tmp("fail_login.html")
+
+@app.route("/success_login") # page de redirection login
+def Success_login():
+    return tmp("success_login.html")
 
 # partie vérification signup
 class RegistrationForm(fm):
@@ -117,3 +143,25 @@ class RegistrationForm(fm):
         ]
     )
     submit = sbm("Sign Up")
+
+# partie vérification login
+class LoginForm(fm):
+    email = emf(
+        "Email : ",
+        [
+            em(message="Please enter a email"),
+            lg(min=4, message="Mail is too short, please try gain"),
+            lg(max=40, message="Mail is too long, please try again"),
+            dt()
+        ]
+    )
+
+    password = psf(
+        "Password : ",
+        [
+            dt(message="Please enter a password"),
+            lg(min=4, message="Password is too short, please try again"),
+            lg(max=100, message="Password is too long, please try again")
+        ]
+    )
+    submit = sbm("Login")
