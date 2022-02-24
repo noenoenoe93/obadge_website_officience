@@ -73,6 +73,14 @@ def Success_signup():
 def Badges():
     return tmp("badges.html")
 
+@app.route("/fail_login") # page de redirection login
+def Fail_login():
+    return tmp("fail_login.html")
+
+@app.route("/success_login") # page de redirection login
+def Success_login():
+    return tmp("success_login.html")
+
 @app.route("/login", methods=['POST', 'GET'])
 def Login():
     form = LoginForm(rq.form)
@@ -82,29 +90,20 @@ def Login():
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (email, password))  # exécution de la requête mysql
         dup1 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>0;")
+        dup2 = cur.fetchone()
+        print(dup2)
 
         # partie vérifification des doublons dans la db
-        if dup1 > 0: 
-                    mysql.connection.commit()
-                    cur.close()
-                    fls("Login successful")
-                    return rdir(rlf('Success_login')) # redirection avec message si infos valide
-
-        elif dup1 < 1:
-                    cur.close()
-                    fls("You must to signup first, before login") # redirection avec message si infos non existante
-                    return rdir(rlf('Fail_login'))
+        if dup1 > 1:
+            mysql.connection.commit()
+            cur.close()
+            fls("Login successful")
+            return rdir(rlf('Success_login')) # redirection avec message si infos valide
         else:
-            print("c'est mort")
+            cur.close()
+            fls("You must to signup first, before login") # redirection avec message si infos non existante
+            return rdir(rlf('Fail_login'))
     return tmp("login.html", form=form)
-
-@app.route("/fail_login") # page de redirection login
-def Fail_login():
-    return tmp("fail_login.html")
-
-@app.route("/success_login") # page de redirection login
-def Success_login():
-    return tmp("success_login.html")
 
 # partie vérification signup
 class RegistrationForm(fm):
