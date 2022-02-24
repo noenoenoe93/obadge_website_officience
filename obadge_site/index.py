@@ -84,15 +84,18 @@ def Login():
         dup1 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>0;")
 
         # partie vérifification des doublons dans la db
-        if dup1 >= 1:
-                cur.close()
-                fls("Sorry, email is already taken") # redirection avec message si infos non valide
-                return rdir(rlf('Fail_login'))
+        if dup1 > 0: 
+                    mysql.connection.commit()
+                    cur.close()
+                    fls("Login successful")
+                    return rdir(rlf('Success_login')) # redirection avec message si infos valide
+
+        elif dup1 < 1:
+                    cur.close()
+                    fls("You must to signup first, before login") # redirection avec message si infos non existante
+                    return rdir(rlf('Fail_login'))
         else:
-                mysql.connection.commit()
-                cur.close()
-                fls("Login successful")
-                return rdir(rlf('Success_login')) # redirection avec message si infos valide
+            print("c'est mort")
     return tmp("login.html", form=form)
 
 @app.route("/fail_login") # page de redirection login
