@@ -84,17 +84,18 @@ def Success_login():
 @app.route("/login", methods=['POST', 'GET'])
 def Login():
     form = LoginForm(rq.form)
-    if rq.method == 'POST' and form.validate(): 
-        email = form.email.data
+    if rq.method == 'POST': 
+        user_email = form.email.data
         password = form.password.data
         cur = mysql.connection.cursor()  # connexion à la base de données
-        cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (email, password))  # exécution de la requête mysql
-        dup1 = cur.execute("SELECT email_user, COUNT(email_user) FROM inscription GROUP BY email_user HAVING COUNT(email_user)>0;")
-        dup2 = cur.fetchone()
-        print(dup2)
+        cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (user_email, password))  # exécution de la requête mysql
+        dup1 = cur.execute("select * from inscription where email_user = %s",[user_email])
+        #dup2 = cur.fetchone()
+        #print(dup2)
 
         # partie vérifification des doublons dans la db
-        if dup1 > 1:
+        if dup1 > 0:
+            cur.fetchone()
             mysql.connection.commit()
             cur.close()
             fls("Login successful")
