@@ -91,8 +91,6 @@ def Login():
         cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (user_email, password))  # exécution de la requête mysql
         dup1 = cur.execute("select * from inscription where email_user = %s",[user_email])
         dup2 = cur.execute("select * from inscription where password_user = %s",[password])
-        #dup2 = cur.fetchone()
-        #print(dup2)
 
         # partie vérifification du mdp et de l'utilisateur dans la db
         if dup1 > 0 and dup2 > 0:
