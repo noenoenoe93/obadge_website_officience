@@ -90,11 +90,12 @@ def Login():
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO login(email_user, password_user) VALUES(%s, %s)", (user_email, password))  # exécution de la requête mysql
         dup1 = cur.execute("select * from inscription where email_user = %s",[user_email])
+        dup2 = cur.execute("select * from inscription where password_user = %s",[password])
         #dup2 = cur.fetchone()
         #print(dup2)
 
-        # partie vérifification des doublons dans la db
-        if dup1 > 0:
+        # partie vérifification du mdp et de l'utilisateur dans la db
+        if dup1 > 0 and dup2 > 0:
             cur.fetchone()
             mysql.connection.commit()
             cur.close()
@@ -102,7 +103,7 @@ def Login():
             return rdir(rlf('Success_login')) # redirection avec message si infos valide
         else:
             cur.close()
-            fls("You must to signup first, before login") # redirection avec message si infos non existante
+            fls("Error, email user does not exist, or the password is incorrect") # redirection avec message si infos non existante, ou non valide
             return rdir(rlf('Fail_login'))
     return tmp("login.html", form=form)
 
