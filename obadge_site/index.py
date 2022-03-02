@@ -1,5 +1,5 @@
-from unicodedata import name
-from flask import render_template as tmp, session
+from datetime import timedelta as tm
+from flask import render_template as tmp
 from flask import request as rq
 from flask import Flask as flk
 from flask import flash as fls
@@ -21,7 +21,7 @@ from wtforms.validators import EqualTo as eq
 app = flk(__name__)
 
 # session configuration
-app.config["SESSION_PERMANENT"] = False
+app.permanent_session_lifetime = tm(minutes=60)
 
 # mysql configuration
 mysql = msl()
@@ -36,6 +36,9 @@ mysql.init_app(app)
 
 @app.route("/")  # répertoire du site
 def Accueil():
+    if "name" in ses:
+        name = ses["name"]
+        return f"<h1>Bienvenue : {name}</h1>"
     return tmp("home.html")
 
 @app.route("/inscription", methods=['POST', 'GET'])
@@ -77,6 +80,19 @@ def Success_signup():
 @app.route("/badges")
 def Badges():
     return tmp("badges.html")
+'''
+@app.route("/session_user") # session
+def Session():
+   if "name" in ses:
+        name = ses["name"]
+        return f"<h1>Bienvenue : {name}</h1>"
+   else:
+'''        
+
+@app.route("/session_user_logout") # session
+def Session_logout():
+    ses.pop("name", None)
+    return rdir(rlf("login"))
 
 @app.route("/fail_login") # page de redirection login
 def Fail_login():
@@ -91,11 +107,12 @@ def Success_login():
     return tmp("success_login.html")
 
 @app.route("/login", methods=['POST', 'GET'])
-def Login(user_name):
+def Login():
     form = LoginForm(rq.form)
     if rq.method == 'POST':
-        session['user_name'] = user_name
+        ses.permanent = True # session permanente
         name = form.name.data
+        ses['name'] = name
         user_email = form.email.data
         password = form.password.data
         cur = mysql.connection.cursor()  # connexion à la base de données
@@ -116,7 +133,7 @@ def Login(user_name):
             cur.close()
             fls("Error: email user does not exist, the password is incorrect or username is incorrect") # redirection avec message si infos non existante, ou non valide
             return rdir(rlf('Fail_login'))
-    return tmp(f"Welcome {user_name}", "login.html", form=form)
+    return tmp("login.html", form=form)
 
 # partie vérification signup
 class RegistrationForm(fm):
