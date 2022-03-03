@@ -202,6 +202,3 @@ class LoginForm(fm):
         ]
     )
     submit = sbm("Login")
-
-# partie reset password
-    class resetForm(fm):
