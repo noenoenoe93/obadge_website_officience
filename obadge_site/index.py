@@ -1,27 +1,42 @@
-from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses
+from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses, jsonify as js
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
 from wtforms.validators import DataRequired as dt, Length as lg, Email as em, EqualTo as eq
-from datetime import timedelta as tm; from flask_mysqldb import MySQL as msl
+from datetime import timedelta as tm
+from flask_mysqldb import MySQL as msl
+from flask_mail import Mail as m, Message as msg
 
 app = flk(__name__)
 
 # session configuration
 app.permanent_session_lifetime = tm(minutes=60)
 
-# mysql configuration
-mysql = msl(); 
+# mysql configuration 
 app.config['MYSQL_HOST'] = 'remotemysql.com'
 app.config['MYSQL_USER'] = '9chqeV2qiY'
 app.config['MYSQL_PASSWORD'] = 'KijTw9vZN4'
 app.config['MYSQL_DB'] = '9chqeV2qiY'
-app.config['SECRET_KEY'] = 'abcdefghijklmnop'
+app.config['SECRET_KEY'] = '7f664d8fdeda9ebc4ffcfd82d45d2982526a16d3c74c0d3d6b15cfc7e5b0e7855621b8a37cdedb49dce67f3f3eb78446560dd9616ff10e1fe02fba7ebf004656'
 
-# initialisation mysql
-mysql.init_app(app)
+# Mail Config
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USE_TLS"] = False
+app.config["MAIL_USERNAME"] = "noelevanquang@gmail.com"
+app.config["MAIL_PASSWORD"] = 'password'
+
+# initialisation
+# mysql.init_app(app)
+mysql = msl()
+mail = m(app)
 
 @app.route("/")  # répertoire du site
 def Accueil():
     return tmp("home.html")
+
+@app.route("/reset")
+def Reset_password():
+    return tmp("reset_password.html")
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
@@ -66,9 +81,9 @@ def Badges():
 @app.route("/session_user") # session
 def Session():
    if "name" in ses:
-        return tmp("home.html")
+        return tmp("home.html", f"<h1>Welcome : {{ name }}</h1>")
    else:
-        return tmp("home.html")    
+        return tmp("fail_login.html")    
 
 @app.route("/session_user_logout") # session
 def Session_logout():
@@ -91,8 +106,8 @@ def Success_login():
 def Login():
     form = LoginForm(rq.form)
     if rq.method == 'POST':
-        ses.permanent = True
         name = form.name.data
+        ses.permanent = True
         ses['name'] = name
         user_email = form.email.data
         password = form.password.data
@@ -108,7 +123,7 @@ def Login():
             mysql.connection.commit()
             cur.close()
             fls("Login successful")
-            return rdir(rlf('Success_login')) # redirection avec message si infos valide
+            return rdir(rlf('Session')) # redirection avec message si infos valide
 
         else:
             cur.close()
@@ -187,3 +202,6 @@ class LoginForm(fm):
         ]
     )
     submit = sbm("Login")
+
+# partie reset password
+    class resetForm(fm):
