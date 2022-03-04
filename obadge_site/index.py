@@ -25,6 +25,23 @@ app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USERNAME"] = "noelevanquang@gmail.com"
 app.config["MAIL_PASSWORD"] = 'password'
 
+# config sécurité
+app.config["SECURITY_REDIRECT_VALIDATE_RE"] = "^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
+
+# config password reset
+app.config["SECURITY_RESET_URL"] = "/reset"
+app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "/reset_password.html"
+app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "/reset_password.html"
+app.config["SECURITY_POST_RESET_VIEW"] = "/"
+app.config["SECURITY_RESET_PASSWORD_WITHIN"] = "1 days"
+app.config["SECURITY_SEND_PASSWORD_RESET_EMAIL"] = True
+app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_RESET"] = "Obadge password reset"
+app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE"] = "follow this link for reset your password :"
+
+'''
+SECURITY_DEFAULT_REMEMBER_ME
+'''
+
 # initialisation
 # mysql.init_app(app)
 mysql = msl()
