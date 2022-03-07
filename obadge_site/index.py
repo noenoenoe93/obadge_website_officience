@@ -1,5 +1,5 @@
 from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses, jsonify as js
-from flask_security import RegisterForm, Security as sc
+# from flask_security import RegisterForm, Security as sc
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
 from wtforms.validators import DataRequired as dt, Length as lg, Email as em, EqualTo as eq
 from datetime import timedelta as tm
@@ -14,11 +14,13 @@ app.permanent_session_lifetime = tm(minutes=60)
 # mysql configuration 
 app.config['MYSQL_HOST'] = 'remotemysql.com'
 app.config['MYSQL_USER'] = '9chqeV2qiY'
+app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_PASSWORD'] = 'KijTw9vZN4'
 app.config['MYSQL_DB'] = '9chqeV2qiY'
 app.config['SECRET_KEY'] = '7f664d8fdeda9ebc4ffcfd82d45d2982526a16d3c74c0d3d6b15cfc7e5b0e7855621b8a37cdedb49dce67f3f3eb78446560dd9616ff10e1fe02fba7ebf004656'
 
 # Mail Config
+'''
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
@@ -38,7 +40,7 @@ app.config["SECURITY_RESET_PASSWORD_WITHIN"] = "1 days"
 app.config["SECURITY_SEND_PASSWORD_RESET_EMAIL"] = True
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_RESET"] = "Obadge password reset"
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE"] = "follow this link for reset your password :"
-
+'''
 '''
 SECURITY_DEFAULT_REMEMBER_ME
 '''
@@ -99,7 +101,7 @@ def Badges():
 @app.route("/session_user") # session
 def Session():
    if "name" in ses:
-        return tmp("home.html", f"<h1>Welcome : {{ name }}</h1>")
+        return tmp("home.html", f"<h1>Welcome : {{ session.name }}</h1>")
    else:
         return tmp("fail_login.html")    
 
@@ -125,8 +127,6 @@ def Login():
     form = LoginForm(rq.form)
     if rq.method == 'POST':
         name = form.name.data
-        ses.permanent = True
-        ses['name'] = name
         user_email = form.email.data
         password = form.password.data
         cur = mysql.connection.cursor()  # connexion à la base de données
@@ -137,6 +137,8 @@ def Login():
 
         # partie vérifification du mdp et de l'utilisateur dans la db
         if dup1 > 0 and dup2 > 0 and dup3 > 0:
+            ses.permanent = True
+            ses['name'] = name  
             cur.fetchone()
             mysql.connection.commit()
             cur.close()
@@ -220,8 +222,9 @@ class LoginForm(fm):
         ]
     )
     submit = sbm("Login")
-
+'''
 class ExtendedRegisterForm(RegisterForm):
     email = em("Email : ", [dt()])
 
 security = sc(app, reset_password_form=ExtendedRegisterForm)
+'''
