@@ -1,4 +1,5 @@
 from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses, jsonify as js
+from flask_security import RegisterForm, Security as sc
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
 from wtforms.validators import DataRequired as dt, Length as lg, Email as em, EqualTo as eq
 from datetime import timedelta as tm
@@ -30,8 +31,8 @@ app.config["SECURITY_REDIRECT_VALIDATE_RE"] = "^/{4,}|\\{3,}|[\s\000-\037][/\\]{
 
 # config password reset
 app.config["SECURITY_RESET_URL"] = "/reset"
-app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "/reset_password.html"
-app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "/reset_password.html"
+app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "security/reset_password.html"
+app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "security/reset_password.html"
 app.config["SECURITY_POST_RESET_VIEW"] = "/"
 app.config["SECURITY_RESET_PASSWORD_WITHIN"] = "1 days"
 app.config["SECURITY_SEND_PASSWORD_RESET_EMAIL"] = True
@@ -51,7 +52,7 @@ mail = m(app)
 def Accueil():
     return tmp("home.html")
 
-@app.route("/reset")
+@app.route("/security")
 def Reset_password():
     return tmp("reset_password.html")
 
@@ -219,3 +220,8 @@ class LoginForm(fm):
         ]
     )
     submit = sbm("Login")
+
+class ExtendedRegisterForm(RegisterForm):
+    email = em("Email : ", [dt()])
+
+security = sc(app, reset_password_form=ExtendedRegisterForm)
