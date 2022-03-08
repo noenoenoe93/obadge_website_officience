@@ -12,15 +12,23 @@ app = flk(__name__)
 app.permanent_session_lifetime = tm(minutes=60)
 
 # mysql configuration 
-app.config['MYSQL_HOST'] = 'remotemysql.com'
-app.config['MYSQL_USER'] = '9chqeV2qiY'
-app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_PASSWORD'] = 'KijTw9vZN4'
-app.config['MYSQL_DB'] = '9chqeV2qiY'
-app.config['SECRET_KEY'] = '7f664d8fdeda9ebc4ffcfd82d45d2982526a16d3c74c0d3d6b15cfc7e5b0e7855621b8a37cdedb49dce67f3f3eb78446560dd9616ff10e1fe02fba7ebf004656'
+app.config["MYSQL_HOST"] = 'remotemysql.com'
+app.config["MYSQL_USER"] = '9chqeV2qiY'
+app.config["MYSQL_PORT"] = 3306
+app.config["MYSQL_PASSWORD"] = 'KijTw9vZN4'
+app.config["MYSQL_UNIX_SOCKET"] = None
+app.config["MYSQL_READ_DEFAULT_FILE"] = None
+app.config["MYSQL_CHARSET"] = "utf8"
+app.config["MYSQL_SQL_MODE"] = None
+app.config["MYSQL_AUTOCOMMIT"] = False
+app.config["MYSQL_CUSTOM_OPTIONS"] = None
+app.config["MYSQL_CURSORCLASS"] = None
+app.config["MYSQL_USE_UNICODE"] = True
+app.config["MYSQL_CONNECT_TIMEOUT"] = 20
+app.config["MYSQL_DB"] = '9chqeV2qiY'
+app.config["SECRET_KEY"] = '7f664d8fdeda9ebc4ffcfd82d45d2982526a16d3c74c0d3d6b15cfc7e5b0e7855621b8a37cdedb49dce67f3f3eb78446560dd9616ff10e1fe02fba7ebf004656'
 
 # Mail Config
-'''
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
@@ -28,8 +36,9 @@ app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USERNAME"] = "noelevanquang@gmail.com"
 app.config["MAIL_PASSWORD"] = 'password'
 
+'''
 # config sécurité
-app.config["SECURITY_REDIRECT_VALIDATE_RE"] = "^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
+app.config["SECURITY_REDIRECT_VALIDATE_RE"] = r"^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
 
 # config password reset
 app.config["SECURITY_RESET_URL"] = "/reset"
@@ -40,6 +49,18 @@ app.config["SECURITY_RESET_PASSWORD_WITHIN"] = "1 days"
 app.config["SECURITY_SEND_PASSWORD_RESET_EMAIL"] = True
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_RESET"] = "Obadge password reset"
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE"] = "follow this link for reset your password :"
+app.config["LOGIN_URL"] "/login"
+app.config["LOGOUT_URL"] "/logout"
+app.config["REGISTER_URL"] "/register"
+app.config["RESET_URL"] "/reset"
+"FORGOT_PASSWORD_TEMPLATE": "security/forgot_password.html",
+"LOGIN_USER_TEMPLATE": "security/login_user.html",
+"REGISTER_USER_TEMPLATE": "security/register_user.html",
+"RESET_PASSWORD_TEMPLATE": "security/reset_password.html",
+"SEND_PASSWORD_RESET_EMAIL": True,
+"SEND_PASSWORD_RESET_NOTICE_EMAIL": True,
+"RESET_PASSWORD_WITHIN": "5 days",
+SECURITY_EMAIL_SENDER
 '''
 '''
 SECURITY_DEFAULT_REMEMBER_ME
@@ -50,7 +71,8 @@ SECURITY_DEFAULT_REMEMBER_ME
 mysql = msl()
 mail = m(app)
 
-@app.route("/")  # répertoire du site
+
+@app.route("/security")  # répertoire du site
 def Accueil():
     return tmp("home.html")
 
@@ -58,7 +80,7 @@ def Accueil():
 def Reset_password():
     return tmp("reset_password.html")
 
-@app.route("/inscription", methods=['POST', 'GET'])
+@app.route("/security/inscription", methods=['POST', 'GET'])
 def Inscription():
     form = RegistrationForm(rq.form)
     if rq.method == 'POST' and form.validate():
@@ -82,47 +104,47 @@ def Inscription():
                 return rdir(rlf('Success_signup')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
 
-@app.route("/groupe")
+@app.route("/security/groupe")
 def Team():
     return tmp("groupe.html")
 
-@app.route("/fail_signup") # page de redirection signup
+@app.route("/security/fail_signup") # page de redirection signup
 def Fail_signup():
     return tmp("fail_register.html")
 
-@app.route("/success_register") # page de redirection signup
+@app.route("/security/success_register") # page de redirection signup
 def Success_signup():
     return tmp("success_register.html") 
 
-@app.route("/badges")
+@app.route("/security/badges")
 def Badges():
     return tmp("badges.html")
 
-@app.route("/session_user") # session
+@app.route("/security/session_user") # session
 def Session():
    if "name" in ses:
-        return tmp("home.html", f"<h1>Welcome : {{ session.name }}</h1>")
+        return tmp("home.html")
    else:
         return tmp("fail_login.html")    
 
-@app.route("/session_user_logout") # session
+@app.route("/security/session_user_logout") # session
 def Session_logout():
     ses.pop("name", None)
     return rdir(rlf("login"))
 
-@app.route("/fail_login") # page de redirection login
+@app.route("/security/fail_login") # page de redirection login
 def Fail_login(): 
     return tmp("fail_login.html")
 
-@app.route("/fail_login2") # page de redirection login
+@app.route("/security/fail_login2") # page de redirection login
 def Fail_login2():
     return tmp("fail_login2.html")
 
-@app.route("/success_login") # page de redirection login
+@app.route("/security/success_login") # page de redirection login
 def Success_login():
     return tmp("success_login.html")
 
-@app.route("/login", methods=['POST', 'GET'])
+@app.route("/security/login", methods=['POST', 'GET'])
 def Login():
     form = LoginForm(rq.form)
     if rq.method == 'POST':
