@@ -1,3 +1,7 @@
+import email
+from glob import escape
+from http.client import responses
+from urllib import response
 from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses
 # from flask_security import RegisterForm, Security as sc
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
@@ -5,6 +9,7 @@ from wtforms.validators import DataRequired as dt, Length as lg, Email as em, Eq
 from datetime import timedelta as tm
 from flask_mysqldb import MySQL as msl
 from flask_mail import Mail as m, Message as msg
+from markupsafe import escape as esc
 
 app = flk(__name__)
 
@@ -39,6 +44,11 @@ app.config["MAIL_PASSWORD"] = 'password'
 
 # config sécurité
 app.config["SECURITY_REDIRECT_VALIDATE_RE"] = r"^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
+app.config.update(
+    SESSION_COOKIE_HTTPONLY= True
+)
+response.set_cookie('name', httponly=True)
+response.set_cookie('name', max_age=60)
 
 '''
 # config password reset
@@ -74,12 +84,12 @@ def Accueil():
     return tmp("home.html")
 
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     return tmp("404.html"), 404
 
 @app.route("/security")
-def Reset_password():
-    return tmp("reset_password.html")
+def Reset_password(security):
+    return tmp("reset_password.html", {esc(security)})
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
@@ -131,7 +141,7 @@ def Session():
 @app.route("/session_user_logout") # session
 def Session_logout():
     ses.pop("name", None)
-    return rdir(rlf("login"))
+    return rdir(rlf('Login'))
 
 @app.route("/fail_login") # page de redirection login
 def Fail_login(): 
@@ -148,10 +158,14 @@ def Success_login():
 @app.route("/login", methods=['POST', 'GET'])
 def Login():
     form = LoginForm(rq.form)
+    esc(form) # sécurité par blacklist de caractères
     if rq.method == 'POST':
         name = form.name.data
         user_email = form.email.data
         password = form.password.data
+        esc(name)
+        esc(user_email)
+        esc(password)
         cur = mysql.connection.cursor()  # connexion à la base de données
         cur.execute("INSERT INTO login(email_user, password_user, user_name) VALUES(%s, %s, %s)", (user_email, password, name))  # exécution de la requête mysql
         dup1 = cur.execute("select * from inscription where email_user = %s",[user_email])
@@ -161,7 +175,8 @@ def Login():
         # partie vérifification du mdp et de l'utilisateur dans la db
         if dup1 > 0 and dup2 > 0 and dup3 > 0:
             ses.permanent = True
-            ses['name'] = name  
+            ses['name'] = name
+            esc(ses) 
             cur.fetchone()
             mysql.connection.commit()
             cur.close()
