@@ -1,4 +1,4 @@
-from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses, jsonify as js
+from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses
 # from flask_security import RegisterForm, Security as sc
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
 from wtforms.validators import DataRequired as dt, Length as lg, Email as em, EqualTo as eq
@@ -36,31 +36,28 @@ app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USERNAME"] = "noelevanquang@gmail.com"
 app.config["MAIL_PASSWORD"] = 'password'
 
-'''
+
 # config sécurité
 app.config["SECURITY_REDIRECT_VALIDATE_RE"] = r"^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
 
+'''
 # config password reset
-app.config["SECURITY_RESET_URL"] = "/reset"
-app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "security/reset_password.html"
-app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "security/reset_password.html"
+app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "/security/reset_password.html"
+app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "/security/reset_password.html"
 app.config["SECURITY_POST_RESET_VIEW"] = "/"
 app.config["SECURITY_RESET_PASSWORD_WITHIN"] = "1 days"
 app.config["SECURITY_SEND_PASSWORD_RESET_EMAIL"] = True
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_RESET"] = "Obadge password reset"
 app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE"] = "follow this link for reset your password :"
-app.config["LOGIN_URL"] "/login"
-app.config["LOGOUT_URL"] "/logout"
-app.config["REGISTER_URL"] "/register"
-app.config["RESET_URL"] "/reset"
-"FORGOT_PASSWORD_TEMPLATE": "security/forgot_password.html",
-"LOGIN_USER_TEMPLATE": "security/login_user.html",
-"REGISTER_USER_TEMPLATE": "security/register_user.html",
-"RESET_PASSWORD_TEMPLATE": "security/reset_password.html",
-"SEND_PASSWORD_RESET_EMAIL": True,
-"SEND_PASSWORD_RESET_NOTICE_EMAIL": True,
-"RESET_PASSWORD_WITHIN": "5 days",
-SECURITY_EMAIL_SENDER
+app.config["SECURITY_LOGIN_URL"] = "/security/login.html"
+# app.config["SECURITY_LOGOUT_URL"] = "/logout"
+app.config["SECURITY_REGISTER_URL"] = "/security/inscription.html"
+app.config["SECURITY_RESET_URL"] = "/security/reset_password.html"
+app.config["SECURITY_FORGOT_PASSWORD_TEMPLATE"] = "/security/forgot_password.html"
+app.config["SECURITY_LOGIN_USER_TEMPLATE"] = "/security/login.html"
+app.config["SECURITY_REGISTER_USER_TEMPLATE"] = "/security/inscription.html"
+app.config["SECURITY_RESET_PASSWORD_TEMPLATE"] = "/security/reset_password.html"
+app.config["SECURITY_EMAIL_SENDER"] = "noelevanquang@gmail.com"
 '''
 '''
 SECURITY_DEFAULT_REMEMBER_ME
@@ -72,15 +69,19 @@ mysql = msl()
 mail = m(app)
 
 
-@app.route("/security")  # répertoire du site
+@app.route("/")  # répertoire du site
 def Accueil():
     return tmp("home.html")
+
+@app.errorhandler(404)
+def page_not_found():
+    return tmp("404.html"), 404
 
 @app.route("/security")
 def Reset_password():
     return tmp("reset_password.html")
 
-@app.route("/security/inscription", methods=['POST', 'GET'])
+@app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
     form = RegistrationForm(rq.form)
     if rq.method == 'POST' and form.validate():
@@ -104,47 +105,47 @@ def Inscription():
                 return rdir(rlf('Success_signup')) # redirection avec message si infos valide
     return tmp("inscription.html", form=form)
 
-@app.route("/security/groupe")
+@app.route("/groupe")
 def Team():
     return tmp("groupe.html")
 
-@app.route("/security/fail_signup") # page de redirection signup
+@app.route("/fail_signup") # page de redirection signup
 def Fail_signup():
     return tmp("fail_register.html")
 
-@app.route("/security/success_register") # page de redirection signup
+@app.route("/success_register") # page de redirection signup
 def Success_signup():
     return tmp("success_register.html") 
 
-@app.route("/security/badges")
+@app.route("/badges")
 def Badges():
     return tmp("badges.html")
 
-@app.route("/security/session_user") # session
+@app.route("/session_user") # session
 def Session():
    if "name" in ses:
         return tmp("home.html")
    else:
         return tmp("fail_login.html")    
 
-@app.route("/security/session_user_logout") # session
+@app.route("/session_user_logout") # session
 def Session_logout():
     ses.pop("name", None)
     return rdir(rlf("login"))
 
-@app.route("/security/fail_login") # page de redirection login
+@app.route("/fail_login") # page de redirection login
 def Fail_login(): 
     return tmp("fail_login.html")
 
-@app.route("/security/fail_login2") # page de redirection login
+@app.route("/fail_login2") # page de redirection login
 def Fail_login2():
     return tmp("fail_login2.html")
 
-@app.route("/security/success_login") # page de redirection login
+@app.route("/success_login") # page de redirection login
 def Success_login():
     return tmp("success_login.html")
 
-@app.route("/security/login", methods=['POST', 'GET'])
+@app.route("/login", methods=['POST', 'GET'])
 def Login():
     form = LoginForm(rq.form)
     if rq.method == 'POST':
