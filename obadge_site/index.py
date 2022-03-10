@@ -19,7 +19,6 @@ talisman = tls(
     app, 
     content_security_policy=csp,
     frame_options = 'DENY',
-    strict_transport_security_max_age = 'max-age=63072000' # 2 ans
     )
 
 # session configuration
@@ -81,7 +80,7 @@ SECURITY_DEFAULT_REMEMBER_ME
 def Accueil():
     return tmp("home.html")
 
-@app.errorhandler(404)
+@app.errorhandler(404) # page not found
 def page_not_found(e):
     return tmp("404.html"), 404
 
@@ -132,9 +131,9 @@ def Badges():
 @app.route("/session_user") # session
 def Session():
    if "name" in ses:
-        return tmp("home.html")
+       return tmp("home.html")
    else:
-        return tmp("fail_login.html")    
+       return tmp("fail_login.html")    
 
 @app.route("/session_user_logout") # session
 def Session_logout():
