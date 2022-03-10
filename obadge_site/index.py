@@ -1,7 +1,4 @@
-import email
-from glob import escape
-from http.client import responses
-from urllib import response
+from flask_talisman import Talisman as tls
 from flask import render_template as tmp, request as rq, Flask as flk, flash as fls, redirect as rdir, url_for as rlf, session as ses
 # from flask_security import RegisterForm, Security as sc
 from wtforms import Form as fm, StringField as stf, PasswordField as psf, EmailField as emf, SubmitField as sbm
@@ -11,7 +8,19 @@ from flask_mysqldb import MySQL as msl
 from flask_mail import Mail as m, Message as msg
 from markupsafe import escape as esc
 
+# partie initialisation
 app = flk(__name__)
+mysql = msl()
+mail = m(app)
+csp = {
+    'default-src': 'http://127.0.0.1:5000'
+}
+talisman = tls(
+    app, 
+    content_security_policy=csp,
+    frame_options = 'DENY',
+    strict_transport_security_max_age = 'max-age=63072000' # 2 ans
+    )
 
 # session configuration
 app.permanent_session_lifetime = tm(minutes=60)
@@ -44,11 +53,6 @@ app.config["MAIL_PASSWORD"] = 'password'
 
 # config sécurité
 app.config["SECURITY_REDIRECT_VALIDATE_RE"] = r"^/{4,}|\\{3,}|[\s\000-\037][/\\]{2,}"
-app.config.update(
-    SESSION_COOKIE_HTTPONLY= True
-)
-response.set_cookie('name', httponly=True)
-response.set_cookie('name', max_age=60)
 
 '''
 # config password reset
@@ -73,12 +77,6 @@ app.config["SECURITY_EMAIL_SENDER"] = "noelevanquang@gmail.com"
 SECURITY_DEFAULT_REMEMBER_ME
 '''
 
-# initialisation
-# mysql.init_app(app)
-mysql = msl()
-mail = m(app)
-
-
 @app.route("/")  # répertoire du site
 def Accueil():
     return tmp("home.html")
@@ -88,8 +86,8 @@ def page_not_found(e):
     return tmp("404.html"), 404
 
 @app.route("/security")
-def Reset_password(security):
-    return tmp("reset_password.html", {esc(security)})
+def Reset_password():
+    return tmp("reset_password.html")
 
 @app.route("/inscription", methods=['POST', 'GET'])
 def Inscription():
