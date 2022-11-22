@@ -1,1 +1,0 @@
-refaire le site openbadge avec en plus un choix de classification de badges (aime/aime pas etc like / dislike ...)
